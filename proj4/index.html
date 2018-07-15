@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!--[if IE]>
+			<script>alert('Estas usando un navegador muy antiguo. Por favor actualizalo a fin de mejorar tu experiencia.');</script>
+		<![endif]-->
+
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	     crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600" rel="stylesheet">
+	<style type="text/css">
+		select.form-control:not([size]):not([multiple]),
+		input[type="text"],
+		input[type="number"] {
+			font-size: 14px;
+		}
+
+		.form-group label {
+			font-size: 14px;
+			justify-content: left;
+		}
+
+		select option {
+			font-size: 14px;
+		}
+
+		a.helplnk {
+			color: yellow;
+			font-size: 14px;
+		}
+
+		a.helplnk:hover {
+			color: white;
+			font-size: 17px;
+		}
+
+		.form-container {
+			background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("assets/img/1.jpg");
+			background-size: cover;
+			background-position: center;
+		}
+
+		.styled-text {
+			font-family: 'Raleway', sans-serif;
+		}
+
+		h1 {
+			font-size: 52px;
+		}
+
+		.lead {
+			font-size: 26px;
+			font-weight: 500;
+		}
+
+		footer {
+			background-color: #f0f0f0;
+			height: 100px;
+		}
+	</style>
+	<script>
+		function MsgDisp(msg) {
+			document.getElementById('Msg').textContent = msg;
+			return;
+		}
+
+
+		function myFunction(input) {
+			if (document.getElementById('lat').value == '' || document.getElementById('locality').value == '' || document.getElementById(
+					'route').value == '') {
+				document.getElementById('Msg').textContent =
+					'Debes seleccionar una de las opciones desplegadas, y que contenga calle Y distrito';
+				return false;
+			}
+			return true;
+		}
+	</script>
+</head>
+
+<body>
+	<header>
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+					<div class="container">
+							<a class="navbar-brand" href="#"><img height="85px" src="assets/img/1.png" alt=""></a>
+							<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+							  <span class="navbar-toggler-icon"></span>
+							</button>
+							<div class="collapse navbar-collapse" id="navbarNav">
+							  <ul class="navbar-nav ml-auto">
+							    <li class="nav-item active">
+									<a class="text-muted ml-4" href="#">
+											INGRESAR</a>
+							    </li>
+							    <li class="nav-item">
+									<a class="text-muted ml-4" href="#">REGISTRATE</a>
+							    </li>
+							    
+							  </ul>
+							</div>
+					</div>
+				   </nav>
+		<!-- <ul class="list-inline">
+			
+				<li class="list-inline-item">
+					
+				</li>
+				<li class="list-inline-item ml-3">
+					<a class="text-muted" href="#">REGISTRATE</a>
+				</li>
+			</ul> -->
+		<div class="container">
+			<ul class="list-inline pb-2 pt-4">
+				<li class="list-inline-item ml-2">
+					<a class="text-muted" href="#">Inicio</a>
+				</li>
+				<li class="list-inline-item ml-2">
+					<a class="text-muted" href="#">Precios</a>
+				</li>
+				<li class="list-inline-item ml-2">
+					<a class="text-muted" href="#">Preguntas Frecuentes</a>
+				</li>
+				<li class="list-inline-item ml-2">
+					<div class="dropdown">
+						<button class="btn btn-link dropdown-toggle text-muted" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+						     aria-expanded="false">
+							Acerca de
+						</button>
+						<div class="dropdown-menu mt-4" aria-labelledby="dropdownMenuButton">
+							<a class="dropdown-item py-2" href="#">Los datos</a>
+							<a class="dropdown-item py-2" href="#">Estimaciones de precio</a>
+							<a class="dropdown-item py-2" href="#">Otras informaciones</a>
+							<a class="dropdown-item py-2" href="#">Validacion de Estimados</a>
+
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</header>
+	<div class="form-container">
+		<div class="container pt-3">
+			<div class="row pt-5">
+				<h1 class="styled-text text-white">Calculamos el precio / alquiler de tu casa o departamento en Lima</h1>
+				<div class="col-lg-6 col-xs-6 ml-3 pt-4 pb-4">
+					<form method="post" onsubmit="return myFunction()" action="<?php echo $myurl; ?>">
+						<div class="row mt-1">
+							<div class="col-lg-8 col-xs-8 px-1 form-group">
+								<label for="Direccion" class="text-white">Direccion/Numero/Distrito</label>
+
+								<a class="helplnk text-uppercase" href="https://youtu.be/8qECkJjJyMo" target="_blank">(Ayuda)</a>
+
+								<input type="text" class="form-control" style="padding: 7.5px;" aria-label="Direccion" id="autocomplete" name="direcc" onFocus="geolocate()">
+							</div>
+
+
+							<div class="col-lg-2  col-xs-2 px-1 form-group">
+								<label for="Tipo" class="text-white">Tipo</label>
+								<select class="form-control custom-select" id="proptipo" name="proptipo">
+									<option value="casa" selected="selected">Casa</option>
+									<option value="dpto">Dpto</option>
+								</select>
+							</div>
+							<div class="col-lg-2  col-xs-2 px-1 form-group">
+								<label for="venta" class="text-white">Operacion</label>
+								<select class="form-control custom-select" id="categ_name" name="categ_name">
+									<option value="venta" selected="selected">Vta</option>
+									<option value="alquiler">Alq</option>
+								</select>
+							</div>
+						</div>
+
+
+						<div class="row">
+							<div class="col-lg-2  col-xs-2 px-1 form-group">
+								<label for="Dormitorios" class="text-white">Dormit.</label>
+								<select class="form-control custom-select" id="dorm" name="dorms">
+									<option value="1" selected="selected">1 Dorm</option>
+									<option value="2">2 Dorm</option>
+									<option value="3">3 Dorm</option>
+									<option value="4">4 Dorm</option>
+									<option value="5">5 Dorm</option>
+									<option value="6">6 Dorm</option>
+									<option value="7">7 Dorm</option>
+									<option value="8">8 Dorm</option>
+								</select>
+							</div>
+							<div class="col-lg-2  col-xs-2 px-1 form-group">
+								<label for="Baños" class="text-white">Baños</label>
+								<select class="form-control custom-select" id="banos" name="banos">
+									<option value="1" selected="selected">1 Baño</option>
+									<option value="2">2 Baños</option>
+									<option value="3">3 Baños</option>
+									<option value="4">4 Baños</option>
+									<option value="5">5 Baños</option>
+									<option value="6">6 Baños</option>
+								</select>
+							</div>
+							<div class="col-lg-2  col-xs-2 px-1 form-group">
+								<label for="Estacionamientos" class="text-white">Estac.</label>
+								<select class="form-control custom-select" id="garage" name="garage">
+									<option value="1" selected="selected">1 Estac</option>
+									<option value="2">2 Estac</option>
+									<option value="3">3 Estac</option>
+									<option value="4">4 Estac</option>
+									<option value="5">5 Estac</option>
+									<option value="6">6 Estac</option>
+								</select>
+							</div>
+							<div class="col-lg-2  col-xs-2 px-1 form-group">
+								<label for="area" class="text-white">Area</label>
+								<input type="number" class="form-control" style="padding: 7.5px;" id="area" name="area" min='40' max='3000' placeholder='Area'
+								     onmouseover="MsgDisp('Ingresa el numero de metros cuadrados de Area Construida')" required>
+							</div>
+							<div class="col-lg-2  col-xs-2 px-1 form-group">
+								<label for="antig" class="text-white">Antig.</label>
+								<input type="number" class="form-control" style="padding: 7.5px;" id="antig" name="antig" min='1' max='99' placeholder='Antiguedad'
+								     onmouseover="MsgDisp('Ingresa el numero de años de antiguedad de construccion')" required>
+							</div>
+							<div class="col-lg-2  col-xs-2  px-1 form-group ">
+								<label for="submit"></label>
+								<button type="submit" class="btn btn-primary position-absolute form-control" style="bottom:0; background-color:#244582; border-color:#244582; border-radius: 6px; color:white;"
+								     name="submit ">Estimar</button>
+							</div>
+						</div>
+						<div class="row ">
+							<div class="col-lg-12 col-xs-12 px-1 " style="color:white ">
+								<h6>
+									<p id='Msg'></p>
+								</h6>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-6 p-0 pl-1 pb-1">
+								<input type="hidden" class="field form-control" type="text" id="lat" name="lat" />
+							</div>
+							<div class="col-6 p-0 pl-1 pb-1">
+								<input type="hidden" class="field form-control" type="text" id="lng" name="lng" />
+							</div>
+
+							<div class="col-6 p-0 pl-1 pb-1">
+								<input type="hidden" class="field form-control" type="text" id="locality" name="locality" />
+							</div>
+
+							<div class="col-6 p-0 pl-1 pb-1">
+								<input type="hidden" class="field form-control" type="text" id="postal_code" name="postal_code" />
+							</div>
+
+							<div class="col-6 p-0 pl-1 pb-1">
+								<input type="hidden" class="field form-control" type="text" id="street_number" disabled='true' />
+							</div>
+
+							<div class="col-6 p-0 pl-1 pb-1">
+								<input type="hidden" class="field form-control" type="text" id="route" name=route />
+							</div>
+							<div class="col-6 p-0 pl-1 pb-1">
+								<input type="hidden" class="field form-control" type="text" id="administrative_area_level_1" disabled='true' />
+							</div>
+							<div class="col-6 p-0 pl-1 pb-1">
+								<input type="hidden" class="field form-control" type="text" id="country" disabled='true' />
+							</div>
+
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<p class="mt-5 lead styled-text text-muted mb-5">Ingresa dirección y características, y tendrás un estimado de precio Al instante, con objetividad, y considerando su ubicación,
+			características, y precios de mercado</p>
+		<div class="row pb-4">
+			<div class="col-md-4">
+				<h2 class="styled-text mb-4" style="color: #244582;">Más fácil y rápido </h2>
+				<p class="styled-text">
+					ACCUANTO te da dos formas de tener un precio estimado para tu casa o departamento :
+					<br>
+					<br> Un estimado de precio /alquiler de mercado, basado en la zona, y características de la propiedad.
+					<br>
+					<br> Propiedades Similares, en la misma zona. Indicando sus precios y características
+					<br>
+					<br> No pierdas tiempo buscando en internet alguna propiedad parecida y cercana a la que te interesa, para tener un precio
+					aproximado.
+					<br>
+					<br> ACCUANTO lo hace por ti.
+				</p>
+			</div>
+			<div class="col-md-4">
+				<h2 class="styled-text mb-4" style="color: #244582;">Más exacto
+				</h2>
+				<p class="styled-text">
+					La mitad de las veces nuestros estimados están en un rango del 4.2% del precio conocido.
+					<br>
+					<br> El 78% de nuestros modelos están relacionados a areas de 7 cuadras de lado o menos.
+				</p>
+			</div>
+			<div class="col-md-4">
+				<h2 class="styled-text mb-4" style="color: #244582;">Nuestra diferencia
+				</h2>
+				<p class="styled-text">
+					Usamos procesos automatizados con aprendizaje automático (?) con los que podemos:
+					<br>
+					<br> Abarcar mas información de la que se puede manualmente Ser más exactos en cuanto a la valuación de las diferentes características.
+					<br>
+					<br> Ser específicos a la zona, tipo de propiedad y tipo de operación: venta o alquiler
+					<br>
+					<br> Y tendrás una lista de otras propiedades con alto grado de similitud, según: área, dormitorios, baños, etc.
+				</p>
+			</div>
+		</div>
+		<p class="text-justify styled-text text-muted py-2 mb-5">Inicialmente podemos estimar precios o alquileres para casas y departamentos ubicados en Barranco, Jesus Maria, La Molina,
+			Lince, Magdalena del Mar, Miraflores, Pueblo Libre, San Borja, San Isidro, y Santiago de Surco.</p>
+	</div>
+	<footer>
+
+	</footer>
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src='/js/GoogleAddrProc.js'>
+	</script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js " integrity="sha384-feJI7QwhOS+hwpX2zkaeJQjeiwlhOP+SdQDqhgvvo1DsjtiSQByFdThsxO669S2D
+									" crossorigin="anonymous "></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+	     crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+	     crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+	     crossorigin="anonymous"></script>
+</body>
+
+</html>
